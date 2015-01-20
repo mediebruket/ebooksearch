@@ -84,7 +84,7 @@ if ( $show_heading ) {
 
 $htmlout .= '<form target="_blank" method="GET" action="' . plugins_url('ebok_fullpagesearch.php' , __FILE__) . '">';
 $htmlout .= '<table style="width: 85%; border: 0; margin: 0; padding: 0;"><tr><td style="border: 0; padding: 0; margin: 0; vertical-align: middle; width: 80%;">';
-$htmlout .= '<input name="query" type="text" autocomplete="off" id="search" placeholder="S&oslash;k etter..." />';
+$htmlout .= '<input name="query" type="text" autocomplete="off" id="finnebok_search" placeholder="S&oslash;k etter..." />';
 //$htmlout .= '</td><td style="border: 0; padding: 0; margin: 0; vertical-align: middle; width: 20%;">';
 //$htmlout .= '<input type="submit" value="" class="finnebok_submit" />';
 $htmlout .= '</td></tr></table>';

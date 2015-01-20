@@ -30,6 +30,8 @@ jQuery("img").error(function(){
         $(this).hide();
 });
 
+var finnebok_input_selector = '#finnebok_search';
+
 // Start Ready
 jQuery(document).ready(function() {
 
@@ -37,7 +39,7 @@ jQuery(document).ready(function() {
 	// Live Search
 	// On Search Submit and Get Results
     function search() {
-	    var query_value = jQuery('input#search').val();
+	    var query_value = jQuery(finnebok_input_selector).val();
 		var makstreff = jQuery('input#finnebok_makstreff').val();
     var show_share_links = jQuery('#finnebok_show_share_links').val();
 		var formater = jQuery('input#pdf:checked').val() + jQuery('input#epub:checked').val();
@@ -56,13 +58,13 @@ jQuery(document).ready(function() {
 	}
 
 	//jQuery("input#search").live("keyup", function(e) {
-	jQuery( document ).on("keyup click", "input#search, input#pdf, input#epub", function(e) {
+	jQuery( document ).on("keyup click", finnebok_input_selector + ", input#pdf, input#epub", function(e) {
 		// Set Timeout
 	    clearTimeout(jQuery.data(this, 'timer'));
 
 	    // Set Search String
 	    //var search_string = jQuery(this).val();
-		var search_string = jQuery('input#search').val();
+		var search_string = jQuery(finnebok_input_selector).val();
 		// Do Search
 	    //if (search_string == '') {
 		if (search_string.length < 3) {
