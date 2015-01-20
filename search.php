@@ -275,7 +275,7 @@ echo "</ul>\n";
 <li><a href="#" rel="tab3">Open Library (<?php echo (int)$openlibraryantalltreff;?>)</a></li>
 </ul>
 
-<div style="background-color: #eee; margin-bottom: 1em; padding: 10px; max-height: 400px; overflow: auto;">
+<div>
 
 <div id="tab1" class="eboktabcontent">
 <?php
