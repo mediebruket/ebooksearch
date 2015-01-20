@@ -17,7 +17,7 @@
 	width: 100%;
 	}
 
-b#finnebok_search-string {
+#finnebok_search-string {
 	color: #800;
 	}
 
@@ -101,10 +101,9 @@ img.webloftlogo {
 	margin-right: 13%;
 	}
 
-h4#results-text {
+#results-text {
 	margin: 0;
-	line-height: 30px;
-	}
+}
 
 /* Accordion - Brukes ikke
 
