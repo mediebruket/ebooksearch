@@ -39,13 +39,14 @@ jQuery(document).ready(function() {
     function search() {
 	    var query_value = jQuery('input#search').val();
 		var makstreff = jQuery('input#finnebok_makstreff').val();
+    var show_share_links = jQuery('#finnebok_show_share_links').val();
 		var formater = jQuery('input#pdf:checked').val() + jQuery('input#epub:checked').val();
 	    jQuery('#finnebok_search-string').html(query_value);
 		if(query_value !== '') {
 			jQuery.ajax({
 				type: "POST",
 				url: pluginsUrl,
-				data: { query: query_value, makstreff: makstreff, format: formater },
+				data: { query: query_value, makstreff: makstreff, format: formater, show_share_links: show_share_links },
 				cache: true,
 				success: function(html){
 					jQuery("#finnebok_results").html(html);

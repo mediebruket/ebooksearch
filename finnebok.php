@@ -46,13 +46,19 @@ extract(shortcode_atts(array(
 	'width' => "250px",
 	'dummy' => "dummytekst",
 	'makstreff' => "25",
-	'show_heading' => false
+	'show_heading' => false,
+	'show_share_links' => false
    ), $atts));
 
 if ( $show_heading === 'false' ) {
 	$show_heading = false;
 }
 $show_heading = (boolean) $show_heading;
+
+if ( $show_share_links === 'false' ) {
+	$show_share_links = false;
+}
+$show_share_links = (boolean) $show_share_links;
 
 if ($makstreff > 100) { // ikke vær dust'a
 	$makstreff = 100;
@@ -83,6 +89,7 @@ $htmlout .= '<input name="query" type="text" autocomplete="off" id="search" plac
 //$htmlout .= '<input type="submit" value="" class="finnebok_submit" />';
 $htmlout .= '</td></tr></table>';
 $htmlout .= '<input type="hidden" name="makstreff" id="finnebok_makstreff" value="' . $makstreff . '" />';
+$htmlout .= '<input type="hidden" name="show_share_links" id="finnebok_show_share_links" value="' . $show_share_links . '" />';
 $htmlout .= '<div class="sjekkbokser">';
 $htmlout .= '<input id="epub" type="checkbox" style="vertical-align: middle;" name="epub" value="2" checked>';
 $htmlout .= '<label for="epub">.epub</label>&nbsp;&nbsp;';

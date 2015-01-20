@@ -22,6 +22,7 @@ error_reporting(-1);
 // INNSTILLINGER
 $bokhyllaft = 'false'; // fulltekstsøk i Bokhylla? (gir myriader av treff)
 $makstreff = (int)$_REQUEST['makstreff']; // hvor mange treff henter vi maks fra hvert sted? Definert i shortcode
+$show_share_links = (int)$_REQUEST['show_share_links'];
 
 // vi trenger funksjoner
 require_once ('includes/functions.php');
@@ -39,8 +40,11 @@ $singlehtml .= "<a class=\"ebokresultlink\" href=\"urlString\" target=\"_blank\"
 $singlehtml .= "<img class=\"ebokresultcover\" src=\"omslagString\" alt=\"" . htmlspecialchars('titleString - descriptionString') . "\" />\n";
 $singlehtml .= "<b>titleString</b></a>\n";
 $singlehtml .= "<br /><span class=\"ebokresultdescription\">descriptionString</span><br />\n";
-$singlehtml .= '<a target="_blank" href="https://twitter.com/intent/tweet?url=twitterurlString&via=bibvenn&text=twitterdescriptionString&related=bibvenn,sundaune&lang=no"><img style="width: 20px; height: 20px;" src="' . $litentwitt . '" alt="Twitter-deling" /></a>&nbsp;';
-$singlehtml .= "<a target=\"_self\" href=\"javascript:fbShare('urlString', 700, 350)\"><img style=\"width: 50px; height: 21px;\" src=\"" . $litenface . "\" alt=\"Facebook-deling\" /></a>";
+
+if ( $show_share_links ) {
+	$singlehtml .= '<a target="_blank" href="https://twitter.com/intent/tweet?url=twitterurlString&via=bibvenn&text=twitterdescriptionString&related=bibvenn,sundaune&lang=no"><img style="width: 20px; height: 20px;" src="' . $litentwitt . '" alt="Twitter-deling" /></a>&nbsp;';
+	$singlehtml .= "<a target=\"_self\" href=\"javascript:fbShare('urlString', 700, 350)\"><img style=\"width: 50px; height: 21px;\" src=\"" . $litenface . "\" alt=\"Facebook-deling\" /></a>";
+}
 
 $singlehtml .= "<br style=\"clear: both;\">";
 $singlehtml .= "</div>\n\n";
