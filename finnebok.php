@@ -49,6 +49,11 @@ extract(shortcode_atts(array(
 	'show_heading' => false
    ), $atts));
 
+if ( $show_heading === 'false' ) {
+	$show_heading = false;
+}
+$show_heading = (boolean) $show_heading;
+
 if ($makstreff > 100) { // ikke vær dust'a
 	$makstreff = 100;
 }
