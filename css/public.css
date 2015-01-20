@@ -83,7 +83,7 @@ img.ebokresultcover {
 	height: 32px;
 	border: 0px;
 	background-color: none;
-	outline: 0;	
+	outline: 0;
 	}
 
 .ebok_skjema input[type="submit"]:hover {
@@ -94,7 +94,7 @@ img.ebokresultcover {
 	height: 32px;
 	border: 0px;
 	background-color: none;
-	outline: 0;	
+	outline: 0;
 	opacity: 0.5;
 	}
 
@@ -116,7 +116,7 @@ h4#results-text {
 	line-height: 30px;
 	}
 
-/* Accordion - Brukes ikke  
+/* Accordion - Brukes ikke
 
 #acc {width:100%; list-style:none; color:#033; margin:0 auto 10px}
 #acc h3 {width: 100%; border:1px solid #9ac1c9; padding:6px 6px 8px; font-weight:bold; margin: 10px 0; cursor:pointer;}
@@ -137,7 +137,7 @@ margin-bottom: 0;
 list-style-type: none;
 text-align: center; /*set to left, center, or right to align the menu as desired*/
 }
-	
+
 .ebokshadetabs li{
 display: inline;
 margin: 0;
