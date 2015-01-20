@@ -61,18 +61,8 @@ img.ebokresultcover {
 .ebok_skjema h2 {
 	color: #000;
 	width: 100%;
-	font-size: 1.6em;
-	border-bottom: 3px solid orange;
 	margin-bottom: 10px;
 	text-align: center;
-	}
-
-.ebok_skjema input[type=text] {
-	font-size: 1.1em;
-	background-color: #ccc;
-	margin: 0;
-	border: 1px solid #333;
-	border-radius: 5px;
 	}
 
 .ebok_skjema input[type="submit"] {

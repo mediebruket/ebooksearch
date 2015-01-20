@@ -68,7 +68,7 @@ $htmlout .= '</script>';
 $htmlout .= '<div class="ebok_skjema" style="width: ' . $width . '">';
 
 if ( $show_heading ) {
-	$htmlout .= '<h2 style="margin-bottom: 10px; text-align: center;">S&oslash;k i e-bok og PDF</h2>';
+	$htmlout .= '<h2>S&oslash;k i e-bok og PDF</h2>';
 }
 
 $htmlout .= '<form target="_blank" method="GET" action="' . plugins_url('ebok_fullpagesearch.php' , __FILE__) . '">';
