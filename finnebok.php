@@ -45,7 +45,8 @@ function finnebok_func ($atts){
 extract(shortcode_atts(array(
 	'width' => "250px",
 	'dummy' => "dummytekst",
-	'makstreff' => "25"
+	'makstreff' => "25",
+	'show_heading' => false
    ), $atts));
 
 if ($makstreff > 100) { // ikke vær dust'a
@@ -65,7 +66,11 @@ $htmlout .= "* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full sour
 $htmlout .= "***********************************************/";
 $htmlout .= '</script>';
 $htmlout .= '<div class="ebok_skjema" style="width: ' . $width . '">';
-$htmlout .= '<h2 style="margin-bottom: 10px; text-align: center;">S&oslash;k i e-bok og PDF</h2>';
+
+if ( $show_heading ) {
+	$htmlout .= '<h2 style="margin-bottom: 10px; text-align: center;">S&oslash;k i e-bok og PDF</h2>';
+}
+
 $htmlout .= '<form target="_blank" method="GET" action="' . plugins_url('ebok_fullpagesearch.php' , __FILE__) . '">';
 $htmlout .= '<table style="width: 85%; border: 0; margin: 0; padding: 0;"><tr><td style="border: 0; padding: 0; margin: 0; vertical-align: middle; width: 80%;">';
 $htmlout .= '<input name="query" type="text" autocomplete="off" id="search" placeholder="S&oslash;k etter..." />';
