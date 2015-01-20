@@ -3,9 +3,9 @@
 /**
  *
  * @package   Ebook Search by Webloft
- * @author    Håkon Sundaune <haakon@bibliotekarensbestevenn.no>
+ * @author    HÃ¥kon Sundaune <haakon@bibliotekarensbestevenn.no>
  * @license   GPL-3.0+
- * @link      http://www.bibvenn.no 
+ * @link      http://www.bibvenn.no
  * @copyright 2014 Sundaune
  *
  * @wordpress-plugin
@@ -27,8 +27,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// INCLUDE NECESSARY  
-    
+// INCLUDE NECESSARY
+
     add_action( 'wp_enqueue_scripts', 'safely_add_stylesheet' );
 
     /**
@@ -49,18 +49,18 @@ extract(shortcode_atts(array(
 	'show_heading' => false
    ), $atts));
 
-if ($makstreff > 100) { // ikke vær dust'a
+if ($makstreff > 100) { // ikke vÃ¦r dust'a
 	$makstreff = 100;
 }
 
-// DEFINE HTML TO OUTPUT WHEN SHORTCODE IS FOUND 
+// DEFINE HTML TO OUTPUT WHEN SHORTCODE IS FOUND
 
 $width = strip_tags(stripslashes($width));
 
 $htmlout = '<script type="text/javascript">';
 $htmlout .= "var pluginsUrl = '" . plugins_url('/search.php' , __FILE__) . "'";
 $htmlout .= "/***********************************************";
-$htmlout .= "* Tab Content script v2.2- © Dynamic Drive DHTML code library (www.dynamicdrive.com)";
+$htmlout .= "* Tab Content script v2.2- Â© Dynamic Drive DHTML code library (www.dynamicdrive.com)";
 $htmlout .= "* This notice MUST stay intact for legal use";
 $htmlout .= "* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code";
 $htmlout .= "***********************************************/";
@@ -88,14 +88,14 @@ $htmlout .= '<br style="clear: both;">';
 //$htmlout .= '</form>';
 $htmlout .= '</div>';
 $htmlout .= '<h4 id="results-text" style="line-height: 1.1em; display: none; width: ' . $width . '">';
-//$htmlout .= '<img style="float: left; margin-right: 2%; margin-bottom: 5px; box-shadow: none; width: 40px;" class="webloftlogo" src="' . plugins_url( 'g/webloftlogo.png', __FILE__ ) . '" alt="Bibliotekarens beste venn / Webløft" />';
+//$htmlout .= '<img style="float: left; margin-right: 2%; margin-bottom: 5px; box-shadow: none; width: 40px;" class="webloftlogo" src="' . plugins_url( 'g/webloftlogo.png', __FILE__ ) . '" alt="Bibliotekarens beste venn / WeblÃ¸ft" />';
 $htmlout .= 'Viser maks. ' . $makstreff . ' treff for: <b id="finnebok_search-string"></b><br /><i>S&oslash;ket oppdateres mens du skriver, og kan ta noen sekunder... v&aelig;r t&aring;lmodig! Vil du &aring;pne s&oslash;ket i et eget vindu og eventuelt vise flere treff, klikk <input style="font-size: 1em; padding: 3px; height: 2em; font-weight: bold; vertical-align: top;" type="submit" value="her!"></form></i></h4>';
 $htmlout .= '<div id="finnebok_results" style="width: ' . $width . '"></div>';
 
 return $htmlout;
 
 }; // end function
- 
+
 add_shortcode("finnebok_skjema", "finnebok_func");
 
 /*----------------------------------------------------------------------------*
@@ -206,7 +206,7 @@ class finnebok_widget extends WP_Widget {
 			__( 'Finn ebok-widget', $this->get_widget_slug() ),
 			array(
 				'classname'  => $this->get_widget_slug().'-class',
-				'description' => __( 'Sett inn en søkeboks for å finne e-bøker.', $this->get_widget_slug() )
+				'description' => __( 'Sett inn en sÃ¸keboks for Ã¥ finne e-bÃ¸ker.', $this->get_widget_slug() )
 			)
 		);
 
@@ -249,7 +249,7 @@ class finnebok_widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		
+
 		// Check if there is a cached output
 		$cache = wp_cache_get( $this->get_widget_slug(), 'widget' );
 
@@ -261,8 +261,8 @@ class finnebok_widget extends WP_Widget {
 
 		if ( isset ( $cache[ $args['widget_id'] ] ) )
 			return print $cache[ $args['widget_id'] ];
-		
-		// go on with your widget logic, put everything into a string and …
+
+		// go on with your widget logic, put everything into a string and
 
 
 		extract( $args, EXTR_SKIP );
@@ -283,9 +283,9 @@ class finnebok_widget extends WP_Widget {
 		print $widget_string;
 
 	} // end widget
-	
-	
-	public function flush_widget_cache() 
+
+
+	public function flush_widget_cache()
 	{
     	wp_cache_delete( $this->get_widget_slug(), 'widget' );
 	}
