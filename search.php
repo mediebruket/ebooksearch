@@ -118,18 +118,19 @@ $bokhyllaantalltreff = substr(stristr($xmldata->subtitle, " of ") , 4);
 		}
 	} // SLUTT PÅ HVERT ENKELT TREFF
 
-	foreach ($bokhyllatreff as $singeltreff) {
-		$bokhyllatreffhtml = str_replace ("twitterurlString" , urlencode($singeltreff['url']) , $singlehtml);
-		$bokhyllatreffhtml = str_replace ("twitterdescriptionString" , htmlspecialchars($tittel). htmlspecialchars(" (".$forfatter.")"), $bokhyllatreffhtml);
-		$bokhyllatreffhtml = str_replace ("urlString" , $singeltreff['url'] , $bokhyllatreffhtml);
-		$bokhyllatreffhtml = str_replace ("titleString" , trunc($singeltreff['tittel'], 12) , $bokhyllatreffhtml);
-		$bokhyllatreffhtml = str_replace ("descriptionString" , trunc($singeltreff['forfatter'], 5) , $bokhyllatreffhtml);
-		$bokhyllatreffhtml = str_replace ("omslagString" , $singeltreff['bokomslag'] , $bokhyllatreffhtml);
-		$bokhyllatreffhtml = str_replace ("classString" , "bokhyllatreff" , $bokhyllatreffhtml);
+	if ( $bokhyllatreff ) {
+		foreach ($bokhyllatreff as $singeltreff) {
+			$bokhyllatreffhtml = str_replace ("twitterurlString" , urlencode($singeltreff['url']) , $singlehtml);
+			$bokhyllatreffhtml = str_replace ("twitterdescriptionString" , htmlspecialchars($tittel). htmlspecialchars(" (".$forfatter.")"), $bokhyllatreffhtml);
+			$bokhyllatreffhtml = str_replace ("urlString" , $singeltreff['url'] , $bokhyllatreffhtml);
+			$bokhyllatreffhtml = str_replace ("titleString" , trunc($singeltreff['tittel'], 12) , $bokhyllatreffhtml);
+			$bokhyllatreffhtml = str_replace ("descriptionString" , trunc($singeltreff['forfatter'], 5) , $bokhyllatreffhtml);
+			$bokhyllatreffhtml = str_replace ("omslagString" , $singeltreff['bokomslag'] , $bokhyllatreffhtml);
+			$bokhyllatreffhtml = str_replace ("classString" , "bokhyllatreff" , $bokhyllatreffhtml);
 
-		$bokhyllahtml .= $bokhyllatreffhtml;
+			$bokhyllahtml .= $bokhyllatreffhtml;
+		}
 	}
-
 
 // Let's go bokselskap
 
