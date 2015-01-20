@@ -84,20 +84,20 @@ $bokhyllaantalltreff = substr(stristr($xmldata->subtitle, " of ") , 4);
 
 			// METADATA SOM XML FOR DETTE TREFFET
 			$childxml = ($entry->link[0]->attributes()->href); // Dette er XML med metadata
-			
+
 			$output = get_content($childxml);
 			$childxmldata = simplexml_load_string($output);
 
 			$namespaces = $entry->getNameSpaces(true);
 			$nb = $entry->children($namespaces['nb']);
-	
+
 			$bokhyllatreff[$teller]['tittel'] = $childxmldata->titleInfo->title;
 			$bokhyllatreff[$teller]['forfatter'] = $nb->namecreator;
-	
+
 			// BOKOMSLAG, SE http://www-sul.stanford.edu/iiif/image-api/1.1/#parameters
 			if (stristr($nb->urn , ";")) {
 				$tempura = explode (";" , $nb->urn);
-				$urn = trim($tempura[1]); // vi tar nummer 2 
+				$urn = trim($tempura[1]); // vi tar nummer 2
 			} else {
 				$urn = $nb->urn[0];
 			}
@@ -107,7 +107,7 @@ $bokhyllaantalltreff = substr(stristr($xmldata->subtitle, " of ") , 4);
 			} else {
 				$bokhyllatreff[$teller]['bokomslag'] = $generiskbokomslag; // DEFAULTOMSLAG
 			}
-	
+
 			$bokhyllatreff[$teller]['url'] = "http://urn.nb.no/" . $urn;
 			$bokhyllatreff[$teller]['kilde'] = "Nasjonalbiblioteket";
 			$teller++;
@@ -116,13 +116,13 @@ $bokhyllaantalltreff = substr(stristr($xmldata->subtitle, " of ") , 4);
 
 foreach ($bokhyllatreff as $singeltreff) {
 		$bokhyllatreffhtml = str_replace ("twitterurlString" , urlencode($singeltreff['url']) , $singlehtml);
-		$bokhyllatreffhtml = str_replace ("twitterdescriptionString" , htmlspecialchars($tittel). htmlspecialchars(" (".$forfatter.")"), $bokhyllatreffhtml);		
+		$bokhyllatreffhtml = str_replace ("twitterdescriptionString" , htmlspecialchars($tittel). htmlspecialchars(" (".$forfatter.")"), $bokhyllatreffhtml);
         $bokhyllatreffhtml = str_replace ("urlString" , $singeltreff['url'] , $bokhyllatreffhtml);
         $bokhyllatreffhtml = str_replace ("titleString" , trunc($singeltreff['tittel'], 12) , $bokhyllatreffhtml);
         $bokhyllatreffhtml = str_replace ("descriptionString" , trunc($singeltreff['forfatter'], 5) , $bokhyllatreffhtml);
 		$bokhyllatreffhtml = str_replace ("omslagString" , $singeltreff['bokomslag'] , $bokhyllatreffhtml);
 		$bokhyllatreffhtml = str_replace ("classString" , "bokhyllatreff" , $bokhyllatreffhtml);
-       
+
         $bokhyllahtml .= $bokhyllatreffhtml;
 }
 
@@ -133,7 +133,7 @@ $search_string = str_replace ("%22" , "", $search_string);
 $search_string = urldecode ($search_string);
 
 if (($_REQUEST['format'] == "undefined2") || ($_REQUEST['format']) == "12") { // bokselskap bare hvis epub valgt!
-	
+
 	$xmldata = simplexml_load_file('includes/publiseringsliste_bokselskap_20140808.xml'); // Denne er lokal, så den funker
 
 // Gå gjennom lista for å finne treff
@@ -146,7 +146,7 @@ if (($_REQUEST['format'] == "undefined2") || ($_REQUEST['format']) == "12") { //
 			$tittel = $entry->ref->title;
 			if (mb_stristr($forfatter , $search_string) || mb_stristr($tittel , $search_string)) {
 				$bokselskaptreffhtml = str_replace ("twitterurlString" , urlencode($url) , $singlehtml);
-				$bokselskaptreffhtml = str_replace ("twitterdescriptionString" , htmlspecialchars($tittel). htmlspecialchars(" (".$forfatter.")"), $bokselskaptreffhtml); 
+				$bokselskaptreffhtml = str_replace ("twitterdescriptionString" , htmlspecialchars($tittel). htmlspecialchars(" (".$forfatter.")"), $bokselskaptreffhtml);
 				$bokselskaptreffhtml = str_replace ("urlString" , $url , $bokselskaptreffhtml);
 				$bokselskaptreffhtml = str_replace ("titleString" , trunc($tittel, 12) , $bokselskaptreffhtml);
 				$bokselskaptreffhtml = str_replace ("descriptionString" , trunc($forfatter, 5) , $bokselskaptreffhtml);
@@ -192,8 +192,8 @@ foreach ($results as $treff) {
 			$omslag = "https://covers.openlibrary.org/b/olid/" . $treff->cover_edition_key . "-M.jpg";
 			$kilde = "Open Library";
 			$url = "https://openlibrary.org" . $treff->key;
-	
-	
+
+
 			$openlibrarytreffhtml = str_replace ("twitterurlString" , urlencode($url), $singlehtml);
 			$openlibrarytreffhtml = str_replace ("twitterdescriptionString" , htmlspecialchars($tittel). htmlspecialchars(" (".$forfatter.")"), $openlibrarytreffhtml);
 			$openlibrarytreffhtml = str_replace ("urlString" , $url , $openlibrarytreffhtml);
@@ -278,7 +278,7 @@ echo "</ul>\n";
 <div style="background-color: #eee; margin-bottom: 1em; padding: 10px; max-height: 400px; overflow: auto;">
 
 <div id="tab1" class="eboktabcontent">
-<?php 
+<?php
 if ((int)$bokhyllaantalltreff > 0) {
 	echo $bokhyllahtml;
 } else {
@@ -288,7 +288,7 @@ if ((int)$bokhyllaantalltreff > 0) {
 </div>
 
 <div id="tab2" class="eboktabcontent">
-<?php 
+<?php
 if ((int)$bokselskapantalltreff > 0) {
 	echo $bokselskaphtml;
 } else {
@@ -298,7 +298,7 @@ if ((int)$bokselskapantalltreff > 0) {
 </div>
 
 <div id="tab3" class="eboktabcontent">
-<?php 
+<?php
 if ((int)$openlibraryantalltreff > 0) {
 	echo $openlibraryhtml;
 } else {
