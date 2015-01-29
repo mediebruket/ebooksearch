@@ -32,6 +32,9 @@ jQuery("img").error(function(){
 
 var finnebok_input_selector = '#finnebok_search';
 
+// Holds ajax request
+var current_request;
+
 // Start Ready
 jQuery(document).ready(function() {
 
@@ -43,15 +46,18 @@ jQuery(document).ready(function() {
 		var makstreff = jQuery('#finnebok_makstreff').val();
     var show_share_links = jQuery('#finnebok_show_share_links').val();
 		var formater = jQuery('#finnebok_pdf:checked').val() + jQuery('#finnebok_epub:checked').val();
+    var $loader = jQuery('#ebs_loader')
+    ebs_toggle_loader($loader);
 	    jQuery('#finnebok_search-string').html(query_value);
 		if(query_value !== '') {
-			jQuery.ajax({
+			current_request = jQuery.ajax({
 				type: "POST",
 				url: pluginsUrl,
 				data: { query: query_value, makstreff: makstreff, format: formater, show_share_links: show_share_links },
 				cache: true,
 				success: function(html){
 					jQuery("#finnebok_results").html(html);
+          ebs_toggle_loader($loader);
 				}
 			});
 		}return false;
@@ -73,9 +79,18 @@ jQuery(document).ready(function() {
 	    }else{
 	    	jQuery("#finnebok_results").fadeIn();
 	    	jQuery('#results-text').fadeIn();
+
+        if ( current_request ) {
+          current_request.abort();
+        }
+
 	    	jQuery(this).data('timer', setTimeout(search, 100));
 	    };
 
 	});
 
 });
+
+function ebs_toggle_loader(elem) {
+  elem.toggleClass('progress');
+}
