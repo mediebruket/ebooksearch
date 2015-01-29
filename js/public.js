@@ -92,5 +92,5 @@ jQuery(document).ready(function() {
 });
 
 function ebs_toggle_loader(elem) {
-  elem.toggleClass('progress');
+  elem.toggleClass('ebok-progress');
 }

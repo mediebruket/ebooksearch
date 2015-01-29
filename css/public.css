@@ -169,7 +169,7 @@ img.webloftlogo {
   }
 }
 
-.progress {
+.ebok-progress {
   position: relative;
   display: inline-block;
   width: 5em;
@@ -183,10 +183,10 @@ img.webloftlogo {
   animation: spin 1s infinite steps(8);
 }
 
-.progress:before,
-.progress:after,
-.progress > div:before,
-.progress > div:after {
+.ebok-progress:before,
+.ebok-progress:after,
+.ebok-progress > div:before,
+.ebok-progress > div:after {
   content: '';
   position: absolute;
   top: 0;
@@ -203,11 +203,11 @@ img.webloftlogo {
   transform-origin: 50% 2.5em; /* container height / 2 */
 }
 
-.progress:before {
+.ebok-progress:before {
   background: #555;
 }
 
-.progress:after {
+.ebok-progress:after {
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
@@ -215,7 +215,7 @@ img.webloftlogo {
   background: #777;
 }
 
-.progress > div:before {
+.ebok-progress > div:before {
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
@@ -223,7 +223,7 @@ img.webloftlogo {
   background: #999;
 }
 
-.progress > div:after {
+.ebok-progress > div:after {
   -webkit-transform: rotate(-135deg);
   -ms-transform: rotate(-135deg);
   -o-transform: rotate(-135deg);
