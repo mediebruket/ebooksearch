@@ -29,13 +29,13 @@ if ( ! defined( 'WPINC' ) ) {
 
 // INCLUDE NECESSARY
 
-add_action( 'wp_enqueue_scripts', 'safely_add_stylesheet' );
+add_action( 'wp_enqueue_scripts', 'ebok_register_stylesheet' );
 
 /**
- * Add stylesheet to the page
+ * Only register stylesheet. Enqueue when needed.
  */
-function safely_add_stylesheet() {
-  wp_enqueue_style( 'finnebok-shortcode-style', plugins_url('/css/public.css', __FILE__) );
+function ebok_register_stylesheet() {
+  wp_register_style( 'finnebok-shortcode-style', plugins_url('/css/public.css', __FILE__) );
 }
 
 // FIRST COMES THE SHORTCODE... EH, CODE!
@@ -107,7 +107,13 @@ function finnebok_func ($atts){
 
 add_shortcode("finnebok_skjema", "finnebok_func");
 
-
+function ebok_enqueue_style() {
+  global $post;
+  if ( is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'finnebok_skjema' ) ) {
+    wp_enqueue_style('finnebok-shortcode-style');
+  }
+}
+add_action( 'wp_enqueue_scripts', 'ebok_enqueue_style');
 
 
 // WIDGET CODE TO FOLLOW
