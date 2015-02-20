@@ -1,25 +1,25 @@
 // Tabbed content
 
 jQuery(document).ready(function(){
-    jQuery("#finneboktabs li").click(function(e){
-        if (!jQuery(this).hasClass("active")) {
-            var tabNum = jQuery(this).index();
-            var nthChild = tabNum+1;
-            jQuery("#finneboktabs li.active").removeClass("active");
-            jQuery(this).addClass("active");
-            jQuery("#finneboktab li.active").removeClass("active");
-            jQuery("#finneboktab li:nth-child("+nthChild+")").addClass("active");
-        }
-    });
+  jQuery("#finneboktabs li").click(function(e){
+    if (!jQuery(this).hasClass("active")) {
+      var tabNum = jQuery(this).index();
+      var nthChild = tabNum+1;
+      jQuery("#finneboktabs li.active").removeClass("active");
+      jQuery(this).addClass("active");
+      jQuery("#finneboktab li.active").removeClass("active");
+      jQuery("#finneboktab li:nth-child("+nthChild+")").addClass("active");
+    }
+  });
 });
 
 // Facebook sharer window
 
 function fbShare(url, winWidth, winHeight) {
-	var winTop = (screen.height / 2) - (winHeight / 2);
-	var winLeft = (screen.width / 2) - (winWidth / 2);
-	window.open('http://www.facebook.com/sharer.php?u=' + url, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
-    }
+  var winTop = (screen.height / 2) - (winHeight / 2);
+  var winLeft = (screen.width / 2) - (winWidth / 2);
+  window.open('http://www.facebook.com/sharer.php?u=' + url, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+}
 
 // TINY ACCORDION
 
@@ -27,7 +27,7 @@ var TINY={};function T$(i){return document.getElementById(i)}function T$$(e,p){r
 
 // hide missing images
 jQuery("img").error(function(){
-        $(this).hide();
+  $(this).hide();
 });
 
 var finnebok_input_selector = '#finnebok_search';
@@ -39,57 +39,55 @@ var current_request;
 jQuery(document).ready(function() {
 
 
-	// Live Search
-	// On Search Submit and Get Results
-    function search() {
-	    var query_value = jQuery(finnebok_input_selector).val();
-		var makstreff = jQuery('#finnebok_makstreff').val();
-    var show_share_links = jQuery('#finnebok_show_share_links').val();
-		var formater = jQuery('#finnebok_pdf:checked').val() + jQuery('#finnebok_epub:checked').val();
-    var $loader = jQuery('#ebs_loader')
-    ebs_toggle_loader($loader);
-	    jQuery('#finnebok_search-string').html(query_value);
-		if(query_value !== '') {
-			current_request = jQuery.ajax({
-				type: "POST",
-				url: pluginsUrl,
-				data: { query: query_value, makstreff: makstreff, format: formater, show_share_links: show_share_links },
-				cache: true,
-				success: function(html){
-					jQuery("#finnebok_results").html(html);
-          ebs_toggle_loader($loader);
-				}
-			});
-		}return false;
-	}
+  // Live Search
+  // On Search Submit and Get Results
+  function search() {
+   var query_value = jQuery(finnebok_input_selector).val();
+   var makstreff = jQuery('#finnebok_makstreff').val();
+   var show_share_links = jQuery('#finnebok_show_share_links').val();
+   var formater = jQuery('#finnebok_pdf:checked').val() + jQuery('#finnebok_epub:checked').val();
+   var $loader = jQuery('#ebs_loader')
+   ebs_toggle_loader($loader);
+   jQuery('#finnebok_search-string').html(query_value);
+   if(query_value !== '') {
+     current_request = jQuery.ajax({
+      type: "POST",
+      url: pluginsUrl,
+      data: { query: query_value, makstreff: makstreff, format: formater, show_share_links: show_share_links },
+      cache: true,
+      success: function(html){
+       jQuery("#finnebok_results").html(html);
+       ebs_toggle_loader($loader);
+     }
+   });
+   }return false;
+ }
 
-	//jQuery("input#search").live("keyup", function(e) {
-	jQuery( document ).on("keyup click", finnebok_input_selector + ", #finnebok_pdf, #finnebok_epub", function(e) {
-		// Set Timeout
-	    clearTimeout(jQuery.data(this, 'timer'));
+  //jQuery("input#search").live("keyup", function(e) {
+   jQuery( document ).on("keyup click", finnebok_input_selector + ", #finnebok_pdf, #finnebok_epub", function(e) {
+    // Set Timeout
+   clearTimeout(jQuery.data(this, 'timer'));
 
-	    // Set Search String
-	    //var search_string = jQuery(this).val();
-		var search_string = jQuery(finnebok_input_selector).val();
-		// Do Search
-	    //if (search_string == '') {
-		if (search_string.length < 3) {
-		   	jQuery("#finnebok_results").fadeOut();
-	    	jQuery('#results-text').fadeOut();
-	    }else{
-	    	jQuery("#finnebok_results").fadeIn();
-	    	jQuery('#results-text').fadeIn();
+    // Set Search String
+    var search_string = jQuery(finnebok_input_selector).val();
+    // Do Search
+    if (search_string.length < 3) {
+          jQuery("#finnebok_results").fadeOut();
+          jQuery('#results-text').fadeOut();
+        }else {
+          jQuery("#finnebok_results").fadeIn();
+          jQuery('#results-text').fadeIn();
 
-        if ( current_request ) {
-          current_request.abort();
-        }
+          if ( current_request ) {
+            current_request.abort();
+          }
 
-	    	jQuery(this).data('timer', setTimeout(search, 100));
-	    };
+          jQuery(this).data('timer', setTimeout(search, 100));
+        };
 
-	});
+      });
 
-});
+ });
 
 function ebs_toggle_loader(elem) {
   elem.toggleClass('ebok-progress');
