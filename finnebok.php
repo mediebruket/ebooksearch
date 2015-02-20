@@ -98,7 +98,7 @@ function finnebok_func ($atts){
   $htmlout .= '</div>';
   $htmlout .= '<br style="clear: both;">';
   $htmlout .= '</div>';
-  $htmlout .= '<div id="ebs_loader" class="small"></div>';
+  $htmlout .= '<div id="ebs_loader" class="small"><div></div></div>';
   $htmlout .= '<div id="results-text" style="display: none; width: ' . $width . '">';
   $htmlout .= 'Viser maks. ' . $makstreff . ' treff for: <span id="finnebok_search-string"></span><br /><span>S&oslash;ket oppdateres mens du skriver, og kan ta noen sekunder... v&aelig;r t&aring;lmodig! Vil du &aring;pne s&oslash;ket i et eget vindu og eventuelt vise flere treff, klikk <input style="font-size: 1em; padding: 3px; height: 2em; font-weight: bold; vertical-align: top;" type="submit" value="her!"></form></span></div>';
   $htmlout .= '<div id="finnebok_results" style="width: ' . $width . '"></div>';
