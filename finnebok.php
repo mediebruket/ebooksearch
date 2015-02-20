@@ -114,7 +114,7 @@ function ebok_enqueue_style() {
   if ( is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'finnebok_skjema' ) ) {
     wp_enqueue_style('finnebok-shortcode-style');
     wp_enqueue_script( 'finnebok-script' );
-    wp_enqueue_script( 'finnebok-tab-script' );
+    wp_enqueue_script( 'webloft-tab-script' ); // in order to prevent enqueueing a script more than once if localhistory search is active
   }
 }
 add_action( 'wp_enqueue_scripts', 'ebok_enqueue_style');
