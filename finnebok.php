@@ -37,7 +37,7 @@ add_action( 'wp_enqueue_scripts', 'ebok_register_assets' );
 function ebok_register_assets() {
   wp_register_style( 'finnebok-shortcode-style', plugins_url('/css/public.css', __FILE__) );
   wp_register_script( 'finnebok-script', plugins_url( 'js/public.js', __FILE__ ), array('jquery') );
-  wp_register_script( 'finnebok-tab-script', plugins_url( 'js/tabcontent.js', __FILE__ ), array('jquery') );
+  wp_register_script( 'webloft-tab-script', plugins_url( 'js/tabcontent.js', __FILE__ ), array('jquery') );
 }
 
 // FIRST COMES THE SHORTCODE... EH, CODE!
